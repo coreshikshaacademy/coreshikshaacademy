@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Core Shiksha Academy</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+           
+        </div>
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you! Fill out the form below and we'll get in touch with you shortly.</p>
+    </header>
+
+    <main>
+        <section class="contact-details">
+            <h2>Contact Information</h2>
+            <p>Feel free to reach us using the details below:</p>
+            <ul>
+                <li><strong>Phone:</strong> +91 7302266554</li>
+                <li><strong>Email:</strong> coreshikshaacademy21@gmail.com</li>
+                <li><strong>Address:</strong> Marogold street Block Haldwani, Uttarakhand, India</li>
+                <li><strong>Working Hours:</strong> Mon - Sat: 9:00 AM - 6:00 PM</li>
+            </ul>
+        </section>
+
+        <section class="contact-form-section">
+            <h2>Send Us a Message</h2>
+            <form class="contact-form">
+                <p>
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter your full name" required>
+                </p>
+                <p>
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                </p>
+                <p>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" name="phone" id="phone" placeholder="Enter your phone number" required>
+                </p>
+                <p>
+                    <label for="subject">Subject</label>
+                    <input type="text" name="subject" id="subject" placeholder="Enter the subject of your message" required>
+                </p>
+                <p>
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" placeholder="Write your message here..." rows="5" required></textarea>
+                </p>
+                <p>
+                    <input type="submit" value="Send Message">
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Core Shiksha Academy. All rights reserved.</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="../auth/auth-main.js"></script>
+
+    <!-- Your contact form handler -->
+    <script src="contact.js"></script>
+
+</body>
+</html>

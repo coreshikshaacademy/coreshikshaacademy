@@ -1,0 +1,214 @@
+/* class1-vertical.css
+   Cleaned & fixed vertical timeline CSS
+   - No fixed heights (auto expand)
+   - Proper center line + circular connector nodes
+   - Left / right alternating layout
+   - Responsive mobile layout
+*/
+
+/* reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f7fafc;
+  color: #0f172a;
+  padding: 20px;
+  line-height: 1.5;
+}
+
+/* Header */
+.site-header {
+  max-width: 1100px;
+  margin: 0 auto 18px;
+  padding: 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#0b6b4a,#06a77d);
+  color: white;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(6,103,125,0.10);
+}
+.site-header h1 { font-size: 22px; margin-bottom: 6px; }
+.site-header p { font-size: 14px; opacity: 0.95; }
+
+/* timeline wrap */
+.timeline-wrap { max-width: 1100px; margin: 20px auto; padding: 0 12px; }
+
+/* main vertical timeline */
+.timeline {
+  position: relative;
+  padding: 40px 0;
+}
+
+/* center vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 6px;
+  background: linear-gradient(180deg,#e6eef2,#cfe9e8);
+  transform: translateX(-50%);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(6,103,125,0.06);
+  z-index: 1;
+}
+
+/* timeline-item */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 18px 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  /* auto height - do not set fixed height */
+}
+
+/* left / right placement */
+/* left items appear on left; right items on right side */
+.timeline-item.left {
+  left: 0;
+  margin-right: 50%;
+  justify-content: flex-end;
+  text-align: right;
+}
+.timeline-item.right {
+  left: 50%;
+  margin-left: 0;
+  justify-content: flex-start;
+  text-align: left;
+  flex-direction: row-reverse; /* keep circle near center */
+}
+
+/* connector node (dot on center line) */
+.connector-node {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #06a77d; /* visible colored dot */
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(2,6,23,0.08);
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+/* content card */
+.content {
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.06);
+  width: calc(100% - 50px);
+  border-left: 6px solid rgba(6,103,125,0.08);
+}
+
+/* For right side use right border accent (visual symmetry) */
+.timeline-item.right .content {
+  border-left: none;
+  border-right: 6px solid rgba(6,103,125,0.08);
+}
+
+/* step head */
+.step-head { display:flex; align-items:center; gap:12px; }
+
+/* The numbered circle near center */
+.step-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Title and duration */
+.step-head h3 { font-size: 16px; margin-bottom: 2px; }
+.duration { font-size: 12px; color: #64748b; margin-left: 8px; font-weight: 600; }
+
+/* colors for circles */
+.red { background: #ef4444; }     /* 1 */
+.yellow { background: #f59e0b; }  /* 2 */
+.green { background: #10b981; }   /* 3 */
+.blue { background: #3b82f6; }    /* 4 */
+.orange { background: #f97316; }  /* 5 */
+.teal { background: #14b8a6; }    /* 6 */
+.purple { background: #8b5cf6; }  /* 7 */
+.pink { background: #ec4899; }    /* 8 */
+.brown { background: #92400e; }   /* 9 */
+.gray { background: #6b7280; }    /* 10 */
+
+/* summary & detail */
+.summary { margin-top: 8px; color: #475569; font-size: 14px; }
+
+/* detail panel hidden by default; allow smooth expand */
+.detail {
+  margin-top: 10px;
+  color: #334155;
+  background: #f8fafc;
+  padding: 0 10px;
+  border-radius: 8px;
+  border-left: 4px solid rgba(6,103,125,0.08);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease, padding .25s ease;
+}
+.detail.open {
+  padding: 10px;
+  max-height: 800px; /* large enough to show content */
+}
+
+/* small shadow & hover for content card */
+.timeline-item .content:hover { transform: translateY(-4px); transition: transform .15s ease; }
+
+/* ensure the content width does not overflow; allow wrapping */
+.content p, .content h3, .content .summary { word-wrap: break-word; }
+
+/* make sure long lists inside details are readable */
+.detail p, .detail ol, .detail ul { margin-bottom: 8px; }
+
+/* accessible focus styles */
+.step-circle:focus { outline: 3px solid rgba(6,103,125,0.18); outline-offset: 3px; }
+
+/* Responsive behaviour: stack vertically on small screens */
+@media (max-width: 900px) {
+  .timeline::before { left: 20px; } /* move center line left for mobile */
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 20px;
+    margin: 0 0 30px 0;
+    left: 0;
+    justify-content: flex-start;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .timeline-item.left .content,
+  .timeline-item.right .content { border-right: none; border-left: 6px solid rgba(6,103,125,0.08); }
+
+  .connector-node { left: 20px; transform: translateX(0); top: 20px; }
+
+  .step-circle { width: 48px; height: 48px; font-size: 16px; }
+  .content { width: calc(100% - 80px); }
+}
+
+/* print-friendly tweaks */
+@media print {
+  body { background: white; color: black; padding: 10px; }
+  .site-header { background: none; color: black; box-shadow: none; }
+  .timeline::before { background: #ccc; }
+  .connector-node { background: #999; border-color: white; box-shadow: none; }
+  .content { box-shadow: none; border-left-color: #ddd; border-right-color: #ddd; }
+}

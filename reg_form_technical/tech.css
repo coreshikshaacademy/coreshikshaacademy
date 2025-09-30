@@ -1,0 +1,200 @@
+/* styles.css — Technical Course Registration Form */
+
+/* Basic reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page background & container */
+body {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f3fa 60%);
+  color: #676b69;
+  padding: 32px;
+  line-height: 1.45;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card */
+form {
+  width: 100%;
+  max-width: 920px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 8px 30px rgba(87, 106, 189, 0.7), inset 0 1px 0 rgba(120, 164, 192, 0.758);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Form title */
+form > h1 {
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+  color: #403f3f;
+  letter-spacing: 0.2px;
+}
+
+/* Fieldset layout */
+fieldset {
+  border: none;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+/* Legend as section heading */
+legend {
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: inline-block;
+  background: linear-gradient(90deg, #8ab4ff, #b388ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 1.05rem;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+  color: #373a3e;
+}
+
+/* Inputs, selects, textarea */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"], 
+input[type="file"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: #18191a;
+  outline: none;
+  font-size: 0.95rem;
+  transition: box-shadow 0.16s ease, border-color 0.16s ease, transform 0.12s ease;
+}
+
+/* Focus states */
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 6px 20px rgba(58,140,255,0.12);
+  border-color: rgba(47, 128, 242, 0.9);
+  transform: translateY(-1px);
+}
+
+/* Small helper text */
+small {
+  display: block;
+  font-size: 0.78rem;
+  color: #b8ccff;
+  margin-top: 6px;
+}
+
+/* Radio/checkbox inline */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 8px;
+  transform: translateY(1px);
+}
+
+/* Buttons */
+button[type="submit"],
+button[type="reset"] {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin-right: 12px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+/* Primary submit */
+button[type="submit"] {
+  background: linear-gradient(90deg,#4f46e5,#06b6d4);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(6,182,212,0.12);
+}
+
+/* Reset button */
+button[type="reset"] {
+  background: rgba(255,255,255,0.03);
+  color: #000000;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Button hover */
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.6);
+}
+
+/* Layout: two-column grid for larger screens */
+@media (min-width: 820px) {
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  /* Use utility class .full for wide fields (address, notes) */
+  .full {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Make file inputs look better on small screens */
+input[type="file"] {
+  padding: 8px;
+}
+
+/* textarea sizing */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Grouped controls spacing */
+fieldset > label + input,
+fieldset > label + select,
+fieldset > label + textarea {
+  margin-bottom: 12px;
+}
+
+/* Footer / recommendations text */
+form p, form ul {
+  margin-top: 14px;
+  color: #393d44;
+  font-size: 0.9rem;
+}
+
+/* Accessible focus outline for keyboard users */
+:focus {
+  outline: 3px dashed rgba(99,102,241,0.18);
+  outline-offset: 3px;
+}
+
+/* Tiny responsive tweaks for very small screens */
+@media (max-width: 420px) {
+  body { padding: 18px; }
+  form { padding: 18px; border-radius: 12px; }
+  form > h1 { font-size: 1.25rem; }
+  button { width: 100%; margin-bottom: 10px; }
+}

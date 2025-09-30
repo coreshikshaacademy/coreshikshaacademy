@@ -1,0 +1,209 @@
+/* styles.css — Career page styling (clean, responsive, no JS required) */
+
+/* ---------- Base & variables ---------- */
+:root{
+  --bg: #0f1724;           /* dark background */
+  --surface: #0b1220;
+  --card: #0f1a2b;
+  --muted: #94a3b8;
+  --text: #e6eef8;
+  --accent: #2dd4bf;       /* teal/cyan accent */
+  --accent-2: #60a5fa;     /* secondary accent */
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+  --max-width: 1100px;
+  --container-pad: 24px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light-mode fallback if user prefers light scheme */
+@media (prefers-color-scheme: light) {
+  :root{
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --card: #ffffff;
+    --muted: #475569;
+    --text: #0b1220;
+    --glass: rgba(11,18,32,0.03);
+  }
+}
+
+/* ---------- Page layout ---------- */
+* { box-sizing: border-box; }
+html,body{ height:100%; margin:0; padding:0; background:linear-gradient(180deg,var(--bg), #061022); color:var(--text); }
+a{ color:var(--accent-2); text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+/* Container */
+.wrapper{
+  max-width: var(--max-width);
+  margin: 28px auto;
+  padding: 0 var(--container-pad);
+}
+
+/* Header / Nav */
+#site-header{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  margin: 12px auto;
+  padding: 14px 20px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+#main-nav{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  justify-content:space-between;
+  max-width: var(--max-width);
+  margin:0 auto;
+}
+#main-nav a{ color:var(--text); font-weight:600; }
+#main-nav a[id="logo"]{
+  font-size:1.05rem;
+  letter-spacing:0.6px;
+  color:var(--accent);
+}
+
+/* Main content */
+main#main{
+  max-width: var(--max-width);
+  margin: 18px auto;
+  padding: 0 var(--container-pad);
+}
+
+/* Hero */
+#hero{
+  background: linear-gradient(180deg, rgba(45,212,191,0.06), rgba(96,165,250,0.02));
+  border-radius: calc(var(--radius) + 4px);
+  padding: 34px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.55);
+  margin-bottom: 22px;
+}
+#hero h1{ margin:0 0 8px 0; font-size:clamp(1.6rem, 2.7vw, 2.4rem); color:var(--text); }
+#hero p{ margin:8px 0; color:var(--muted); font-size:0.98rem; }
+
+/* Section headings */
+section{ margin-bottom:24px; }
+section h2{
+  font-size:1.05rem;
+  margin:0 0 12px 0;
+  display:inline-block;
+  padding-bottom:6px;
+  border-bottom:2px solid rgba(255,255,255,0.02);
+  color:var(--text);
+}
+
+/* Two-column layout for parts */
+@media (min-width:900px){
+  .grid-2{
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:20px;
+    align-items:start;
+  }
+}
+
+/* Open positions area */
+#open-positions .job{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius: 10px;
+  padding:18px;
+  margin-bottom:14px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.job-title{ margin:0 0 8px 0; font-size:1.05rem; color:var(--accent-2); }
+.job-meta{ margin:0 0 10px 0; color:var(--muted); font-size:0.92rem; }
+
+/* Lists */
+ul, ol{ margin:0 0 12px 20px; color:var(--muted); }
+.job h4{ margin:10px 0 6px 0; color:var(--text); font-size:0.98rem; }
+
+/* Benefits / FAQ card style */
+#benefits, #faq{
+  background: var(--card);
+  border-radius: 12px;
+  padding:18px;
+  border:1px solid rgba(255,255,255,0.03);
+}
+#benefits ul li, #why-work ul li { margin-bottom:8px; }
+
+/* Form styles */
+form#apply-form{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));
+  border-radius: 12px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,0.03);
+}
+form label{ display:block; margin-bottom:6px; color:var(--muted); font-weight:600; font-size:0.9rem; }
+form input[type="text"],
+form input[type="email"],
+form input[type="url"],
+form select,
+form textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
+  color:var(--text);
+  outline:none;
+  font-size:0.95rem;
+  margin-bottom:12px;
+}
+form textarea{ min-height:120px; resize:vertical; }
+form input::placeholder, form textarea::placeholder { color: rgba(230,238,248,0.45); }
+
+/* Buttons */
+button[type="submit"]{
+  display:inline-block;
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#042023;
+  border:none;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 8px 20px rgba(45,212,191,0.08);
+}
+button[type="submit"]:hover{ transform:translateY(-2px); }
+button[type="submit"]:focus{ outline:3px solid rgba(96,165,250,0.18); }
+
+/* Footer */
+#site-footer{
+  max-width: var(--max-width);
+  margin: 18px auto 36px auto;
+  padding: 18px var(--container-pad);
+  text-align:center;
+  color:var(--muted);
+  font-size:0.92rem;
+}
+
+/* Small screens */
+@media (max-width:899px){
+  #main-nav{ flex-direction:column; gap:10px; align-items:flex-start; }
+  .wrapper{ padding: 0 16px; }
+  #hero{ padding:22px; }
+}
+
+/* Accessibility and focus */
+a:focus, button:focus, input:focus, textarea:focus, select:focus{
+  box-shadow: 0 0 0 4px rgba(96,165,250,0.12);
+  border-color: var(--accent-2);
+}
+
+/* Minor utility helpers */
+.kv{ color:var(--muted); font-weight:600; }
+.badge{ display:inline-block; padding:6px 10px; border-radius:999px; font-size:0.85rem; background:var(--glass); color:var(--muted); }
+
+/* Print friendly */
+@media print{
+  body{ background: #fff; color:#000; }
+  header, footer, nav { display:none; }
+  .job{ page-break-inside: avoid; border:none; box-shadow:none; background:transparent; }
+}

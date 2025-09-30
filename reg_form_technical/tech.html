@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Technical Course Registration Form</title>
+  <link rel="stylesheet" href="tech.css">
+</head>
+<body>
+  <form method="POST" enctype="multipart/form-data" autocomplete="on">
+    <h1>Technical Course Registration Form</h1>
+
+    <!-- PERSONAL DETAILS -->
+    <fieldset>
+      <legend>Personal Details</legend>
+
+      <label for="fullName">Full Name *</label><br />
+      <input id="fullName" name="fullName" type="text" placeholder="e.g. Rakesh Upreti" required /><br /><br />
+
+      <label for="fatherName">Father's Name</label><br />
+      <input id="fatherName" name="fatherName" type="text" placeholder="Father's full name" /><br /><br />
+
+      <label for="motherName">Mother's Name</label><br />
+      <input id="motherName" name="motherName" type="text" placeholder="Mother's full name" /><br /><br />
+
+      <label for="dob">Date of Birth</label><br />
+      <input id="dob" name="dob" type="date" /><br /><br />
+
+      <label>Gender</label><br />
+      <input id="genderMale" name="gender" type="radio" value="male" />
+      <label for="genderMale">Male</label>
+      <input id="genderFemale" name="gender" type="radio" value="female" />
+      <label for="genderFemale">Female</label>
+      <input id="genderOther" name="gender" type="radio" value="other" />
+      <label for="genderOther">Other/Prefer not to say</label><br /><br />
+
+      <label for="mobile">Mobile Number *</label><br />
+      <input id="mobile" name="mobile" type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required />
+      <div><small>Please enter a 10-digit mobile number without country code (e.g. 9876543210).</small></div><br />
+
+      <label for="email">Email</label><br />
+      <input id="email" name="email" type="email" placeholder="example@mail.com" /><br /><br />
+    </fieldset>
+
+    <!-- EDUCATION & INSTITUTION -->
+    <fieldset>
+      <legend>Education & Institution</legend>
+
+      <label for="currentlyStudying">Are you currently studying? *</label><br />
+      <select id="currentlyStudying" name="currentlyStudying" required>
+        <option value="">-- Select --</option>
+        <option value="school">School</option>
+        <option value="college">College</option>
+        <option value="working">Working / Employed</option>
+        <option value="notStudying">Not studying</option>
+        <option value="other">Other</option>
+      </select>
+      <div><small>If 'School' or 'College', please mention class/year below.</small></div><br /><br />
+
+      <label for="classOrYear">Class / Current Year (if applicable)</label><br />
+      <input id="classOrYear" name="classOrYear" type="text" placeholder="e.g. 10th, 12th, 2nd Year, Graduate" /><br /><br />
+
+      <label for="schoolCollegeName">School / College Name</label><br />
+      <input id="schoolCollegeName" name="schoolCollegeName" type="text" placeholder="Name of your school or college" /><br /><br />
+
+      <label for="highestQualification">Highest Qualification *</label><br />
+      <select id="highestQualification" name="highestQualification" required>
+        <option value="">-- Select Highest Qualification --</option>
+        <option value="below10">Below 10th</option>
+        <option value="10th">10th</option>
+        <option value="12th">12th</option>
+        <option value="diploma">Diploma</option>
+        <option value="bachelor">Bachelor's</option>
+        <option value="master">Master's</option>
+        <option value="other">Other</option>
+      </select>
+      <div><small>Please upload your highest qualification certificate in the documents section.</small></div><br /><br />
+    </fieldset>
+
+    <!-- COURSE SELECTION -->
+    <fieldset>
+      <legend>Course Selection</legend>
+
+      <label for="course">Select Course *</label><br />
+      <select id="course" name="course" required>
+        <option value="">-- Select Course --</option>
+        <option value="dca">DCA (Diploma in Computer Applications)</option>
+        <option value="tally">Tally ERP</option>
+        <option value="webdesign">Web Designing (HTML / CSS / JS)</option>
+        <option value="python">Python Programming</option>
+        <option value="digitalMarketing">Digital Marketing</option>
+        <option value="graphicDesign">Graphic Designing</option>
+        <option value="hardware">Computer Hardware & Networking</option>
+        <option value="excel">Advanced Excel</option>
+        <option value="dataEntry">Data Entry & Typing</option>
+        <option value="uiux">UI/UX Basics</option>
+        <option value="other">Other (specify below)</option>
+      </select><br /><br />
+
+      <label for="courseOther">If "Other", please specify</label><br />
+      <input id="courseOther" name="courseOther" type="text" placeholder="Write course name if Other selected" /><br /><br />
+
+      <label for="duration">Preferred Duration *</label><br />
+      <select id="duration" name="duration" required>
+        <option value="">-- Select Duration --</option>
+        <option value="1month">1 Month</option>
+        <option value="3months">3 Months</option>
+        <option value="6months">6 Months</option>
+        <option value="12months">12 Months</option>
+        <option value="custom">Custom (specify below)</option>
+      </select><br /><br />
+
+      <label for="customDuration">If Custom, describe preferred schedule/duration</label><br />
+      <input id="customDuration" name="customDuration" type="text" placeholder="e.g. Twice a week for 4 months" /><br /><br />
+
+      <label for="mode">Preferred Mode *</label><br />
+      <select id="mode" name="mode" required>
+        <option value="">-- Select Mode --</option>
+        <option value="offline">Offline / In-person</option>
+        <option value="online">Online / Live</option>
+        <option value="selfpaced">Self-paced (recordings)</option>
+        <option value="hybrid">Hybrid</option>
+      </select><br /><br />
+
+      <label for="preferredStart">Preferred Start Date</label><br />
+      <input id="preferredStart" name="preferredStart" type="date" /><br /><br />
+    </fieldset>
+
+    <!-- CONTACT & ADDRESS -->
+    <fieldset>
+      <legend>Contact & Address</legend>
+
+      <label for="altMobile">Alternate / Emergency Contact Number</label><br />
+      <input id="altMobile" name="altMobile" type="tel" placeholder="Alternate 10-digit number" pattern="[0-9]{10}" /><br /><br />
+
+      <label for="emergencyContactName">Emergency Contact Name</label><br />
+      <input id="emergencyContactName" name="emergencyContactName" type="text" placeholder="Name of emergency contact" /><br /><br />
+
+      <label for="address">Full Address</label><br />
+      <textarea id="address" name="address" rows="3" placeholder="Street, City, State, PIN code"></textarea><br /><br />
+
+      <label for="district">District / City</label><br />
+      <input id="district" name="district" type="text" placeholder="e.g. Haldwani" /><br /><br />
+    </fieldset>
+
+    <!-- DOCUMENT UPLOADS -->
+    <fieldset>
+      <legend>Document Uploads (Required / Recommended)</legend>
+
+      <label for="photo">Passport-size Photo (JPG/PNG) *</label><br />
+      <input id="photo" name="photo" type="file" accept="image/*" required />
+      <div><small>Upload a recent passport-size photo.</small></div><br /><br />
+
+      <label for="aadhaarNumber">Aadhaar Number</label><br />
+      <input id="aadhaarNumber" name="aadhaarNumber" type="text" inputmode="numeric" pattern="[0-9]{12}" placeholder="12-digit Aadhaar (optional)" />
+      <div><small>Enter Aadhaar only if you are comfortable. If provided, also upload scanned copy below.</small></div><br />
+
+      <label for="aadhaarFile">Aadhaar Card (PDF/JPG/PNG)</label><br />
+      <input id="aadhaarFile" name="aadhaarFile" type="file" accept=".pdf,image/*" /><br /><br />
+
+      <label for="lastQualificationFile">Highest Qualification Certificate (PDF/JPG) *</label><br />
+      <input id="lastQualificationFile" name="lastQualificationFile" type="file" accept=".pdf,image/*" required />
+      <div><small>Upload your highest qualification certificate. This is required to verify eligibility.</small></div><br /><br />
+    </fieldset>
+
+    <!-- PAYMENT & FEE (INFORMATION) -->
+    <fieldset>
+      <legend>Fee & Payment (information)</legend>
+
+      <label for="feeOption">Planned Payment Method</label><br />
+      <select id="feeOption" name="feeOption">
+        <option value="">-- Select Payment Method --</option>
+        <option value="cash">Cash (in-person)</option>
+        <option value="upi">UPI / PhonePe / Google Pay</option>
+        <option value="bank">Bank Transfer / NEFT</option>
+        <option value="card">Debit / Credit Card</option>
+        <option value="emi">EMI (if available)</option>
+      </select>
+      <div><small>Actual payment collection and confirmation will be handled separately by the institute.</small></div><br /><br />
+    </fieldset>
+
+    <!-- ADDITIONAL INFORMATION -->
+    <fieldset>
+      <legend>Additional Information</legend>
+
+      <label for="howDidYouKnow">How did you hear about us?</label><br />
+      <select id="howDidYouKnow" name="howDidYouKnow">
+        <option value="">-- Select --</option>
+        <option value="friend">Friend / Family</option>
+        <option value="social">Social Media</option>
+        <option value="website">Website</option>
+        <option value="walkin">Walk-in</option>
+        <option value="ad">Advertisement</option>
+        <option value="other">Other</option>
+      </select><br /><br />
+
+      <label for="notes">Any notes or special requests</label><br />
+      <textarea id="notes" name="notes" rows="4" placeholder="e.g. medical condition, timing constraints, accessibility needs"></textarea><br /><br />
+    </fieldset>
+
+    <!-- DECLARATION & CONSENT -->
+    <fieldset>
+      <legend>Declaration & Consent</legend>
+
+      <input id="declaration" name="declaration" type="checkbox" required />
+      <label for="declaration">
+        I hereby declare that the information provided above is true and correct to the best of my knowledge. I agree to the institute's terms and conditions and consent to the use of my information for course administration purposes. *
+      </label><br /><br />
+    </fieldset>
+
+    <!-- SUBMIT -->
+    <button type="submit">Submit Registration</button>
+    <button type="reset">Reset Form</button>
+  </form>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="../auth/auth-main.js"></script>
+  <script>
+    const form = document.querySelector("form");
+  
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (!form.declaration.checked) {
+            alert("You must agree to the declaration to proceed.");
+            return;
+        }
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
+
+        const formData = new FormData(form);
+
+        try {
+                        const response = await fetch('api/register_technical.php', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert(result.msg || 'Registration submitted successfully! We will contact you shortly.');
+                form.reset();
+            } else {
+                alert(result.msg || 'An error occurred during submission.');
+            }
+        } catch (err) {
+            console.error("Error submitting form:", err);
+            alert("A network error occurred. Please ensure the backend server is running and try again.");
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit Registration';
+        }
+    });
+</script>
+</body>
+</html>

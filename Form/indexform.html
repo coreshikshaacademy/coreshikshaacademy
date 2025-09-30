@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Shiksha Academy Registration Form</title>
+    <link rel="stylesheet" href="formstyle.css">
+</head>
+<body>
+    <header>
+        <h1>Core Shiksha Academy</h1>
+        <p>Your Gateway to Excellence</p>
+    </header>
+
+    <section>
+        <h2>Student Registration Form</h2>
+        <form class="registration_form">
+            <!-- Personal Details -->
+            <fieldset class="form_field">
+                <legend>Personal Details</legend>
+                <p>
+                    <label for="username">Name</label>
+                    <input type="text" name="name" id="username" placeholder="Enter your name" required>
+                </p>
+                <p>
+                    <label for="gender">Gender</label><br>
+                    Male <input type="radio" name="gender" id="male" value="Male" required>
+                    Female <input type="radio" name="gender" id="female" value="Female">
+                </p>
+                <p>
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" name="dob" id="dob" required>
+                </p>
+                <p>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                </p>
+                <p>
+                    <label for="contact">Contact Number</label>
+                    <input type="tel" name="contact" id="contact" placeholder="Enter your contact number" required>
+                </p>
+                <p>
+                    <label for="address">Address</label>
+                    <textarea name="address" id="address" placeholder="Enter your address" rows="3" required></textarea>
+                </p>
+                <p>
+                    <label for="state">State</label> 
+                    <input type="text" name="state" id="state" placeholder="Enter your state" required>
+                </p>
+                <p>
+                    <label for="city">City</label>
+                    <input type="text" name="city" id="city" placeholder="Enter your city" required>
+                </p>
+                <p>
+                    <label for="country">Country</label>
+                    <input type="text" name="country" id="country" placeholder="Enter your country" required>
+                </p>
+            </fieldset>
+
+            <!-- Educational Details -->
+            <fieldset class="form_field">
+                <legend>Educational Details</legend>
+                <p>
+                    <label for="school-name">School Name</label>
+                    <input type="text" name="school_name" id="school-name" placeholder="Enter your school name" required>
+                </p>
+                <p>
+                    <label for="class">Class</label>
+                    <select name="class" id="class" required>
+                        <option value="">Select Class</option>
+                        <option value="1">1st</option>
+                        <option value="2">2nd</option>
+                        <option value="3">3rd</option>
+                        <option value="4">4th</option>
+                        <option value="5">5th</option>
+                        <option value="6">6th</option>
+                        <option value="7">7th</option>
+                        <option value="8">8th</option>
+                        <option value="9">9th</option>
+                        <option value="10">10th</option>
+                        <option value="11">11th</option>
+                        <option value="12">12th</option>
+                    </select>
+                </p>
+                <p id="stream-section" style="display: none;">
+                    <label for="stream">Stream (For 11th and 12th only)</label>
+                    <select name="stream" id="stream">
+                        <option value="">Select Stream</option>
+                        <option value="PCM">PCM (Physics, Chemistry, Mathematics)</option>
+                        <option value="PCMB">PCMB (Physics, Chemistry, Mathematics, Biology)</option>
+                        <option value="PCB">PCB (Physics, Chemistry, Biology)</option>
+                        <option value="Commerce">Commerce</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                </p>
+            </fieldset>
+            
+
+            <!-- Class Mode -->
+            <fieldset class="form_field">
+                <legend>Class Mode</legend>
+                <p>
+                    <label for="class-mode">Preferred Mode of Class</label><br>
+                    Online <input type="radio" name="class_mode" id="online" value="Online" required>
+                    Offline <input type="radio" name="class_mode" id="offline" value="Offline">
+                </p>
+            </fieldset>
+
+            <!-- Document Upload -->
+            <fieldset class="form_field">
+                <legend>Upload Documents</legend>
+                <div class="file-upload">
+                    <label for="aadhaar-file">Aadhaar Card</label><br>
+                    <input type="file" name="aadhaar_file" id="aadhaar-file" required>
+                </div>
+                <br>
+                <div class="file-upload">
+                    <label for="certificate-file">School Certificate</label><br>
+                    <input type="file" name="certificate_file" id="certificate-file" required>
+                </div>
+            </fieldset>
+
+            <!-- Submit -->
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+    </section>
+
+    <script src="form.js"></script>
+    <!-- Firebase Auth is kept for login/logout status in the header -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="../auth/auth-main.js"></script>
+
+    <!-- Form Submission Script -->
+    <script>
+        const form = document.querySelector(".registration_form");
+      
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const submitButton = form.querySelector('input[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.value = 'Submitting...';
+
+            const formData = new FormData(form);
+            
+            const aadhaarFile = formData.get('aadhaar_file');
+            const certificateFile = formData.get('certificate_file');
+
+            if (!aadhaarFile || aadhaarFile.size === 0 || !certificateFile || certificateFile.size === 0) {
+                alert("Please upload both Aadhaar and School Certificate files.");
+                submitButton.disabled = false;
+                submitButton.value = 'Submit';
+                return;
+            }
+
+            try {
+                // This endpoint now points to the relative API path.
+                                const response = await fetch('api/register_student.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.msg || 'Form submitted successfully!');
+                    form.reset();
+                } else {
+                    alert(result.msg || "There was an error submitting your registration.");
+                }
+
+            } catch (err) {
+                console.error("Error submitting form:", err);
+                alert("A network error occurred. Please ensure the backend server is running and accessible.");
+            } finally {
+                submitButton.disabled = false;
+                submitButton.value = 'Submit';
+            }
+        });
+    </script>
+      
+  
+</body>
+
+
+
+</html>

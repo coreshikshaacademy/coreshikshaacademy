@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Core Shiksha Academy</title>
+    <link rel="stylesheet" href="feedback.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+   
+</header>
+
+    <div class="container">
+        <h1>Feedback</h1>
+        <p>We value your feedback! Please let us know about your experience.</p>
+
+        <div id="feedback-form-section">
+            <h2>Submit Your Feedback</h2>
+            <form id="feedback-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Feedback</label>
+                    <textarea id="message" rows="5" placeholder="Write your feedback here..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">&#9733;</label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">&#9733;</label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">&#9733;</label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">&#9733;</label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">&#9733;</label>
+                    </div>
+                </div>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+
+        <hr style="margin: 40px 0;">
+
+        <div id="feedback-display-section">
+            <h2>What Our Students & Visitors Say</h2>
+            <div id="feedback-container">
+                <!-- Feedback will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK for Auth -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="../auth/auth-main.js"></script>
+    <script src="../script.js"></script>
+
+    <!-- Your custom script -->
+    <script src="feedback.js"></script>
+
+</body>
+</html>

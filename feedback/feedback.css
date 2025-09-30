@@ -1,0 +1,133 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #0d47a1;
+}
+
+/* Feedback Form */
+#feedback-form {
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse; /* To make stars select from right to left */
+    justify-content: center;
+}
+
+.rating > input {
+    display: none;
+}
+
+.rating > label {
+    position: relative;
+    width: 1.1em;
+    font-size: 2rem;
+    color: #FFD700;
+    cursor: pointer;
+}
+
+.rating > label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+}
+
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input:checked ~ label:before {
+    opacity: 1;
+}
+
+.rating > input:checked ~ label {
+    color: #FFD700;
+}
+
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input:checked ~ label {
+    color: #FFD700;
+}
+
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0d47a1;
+}
+
+/* Feedback Display */
+#feedback-container {
+    margin-top: 20px;
+}
+
+.feedback-card {
+    background: #f9f9f9;
+    border-left: 5px solid #1976d2;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.feedback-card .author {
+    font-weight: bold;
+    color: #0d47a1;
+}
+
+.feedback-card .rating-display {
+    color: #FFD700;
+    margin-bottom: 5px;
+}
+
+.feedback-card .timestamp {
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
+}
